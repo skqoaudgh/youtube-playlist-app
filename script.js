@@ -84,9 +84,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const leftBtn = document.getElementById('left');
     const rightBtn = document.getElementById('right');
     leftBtn.addEventListener('click', function() {
-        loadVideos(prevPageToken);
+        if(prevPageToken && prevPageToken.length > 0)
+            loadVideos(prevPageToken);
     });
     rightBtn.addEventListener('click', function() {
-        loadVideos(nextPageToken);
+        if(nextPageToken && nextPageToken.length > 0)
+            loadVideos(nextPageToken);
     });
 });

@@ -67,3 +67,18 @@ article:hover {
     white-space: normal;
     word-break: break-all;
 }
+
+footer {
+    text-align: center;
+}
+
+button {
+    all: unset;
+    font-size: 2rem;
+    margin: 0 50px;
+}
+
+button:hover {
+    cursor: pointer;
+    color: #777777;
+}
