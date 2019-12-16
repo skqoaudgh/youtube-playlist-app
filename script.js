@@ -50,15 +50,29 @@ document.addEventListener('DOMContentLoaded', function() {
             const thumb = item.snippet.thumbnails.medium.url;
             const title = item.snippet.title;
             const description = item.snippet.description;
+            const id = item.snippet.resourceId.videoId;
+
             main.innerHTML += `
-                <article>
-                    <img src=${thumb} alt="" class="thumb">
+                <article class="item" data-key="${id}">
+                    <img src="${thumb}" alt="" class="thumb">
                     <div class="details">
                         <h4>${title}</h4>
                         <p>${description}</p>
                     </div>
                 </article>
             `;
+        });
+
+        main.addEventListener('click', function(e) {
+            let article = e.target;
+            if(e.target.tagName == 'IMG' || e.target.tagName == 'DIV') {
+                article = e.target.parentNode;
+            }
+            else if(e.target.tagName == 'H4' || e.target.tagName == 'P') {
+                article = e.target.parentNode.parentNode;
+            }
+            let id = article.getAttribute('data-key');
+            mainVideo(id);
         });
     }
 });
