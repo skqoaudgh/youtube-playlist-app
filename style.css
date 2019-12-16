@@ -16,7 +16,6 @@ body {
   
 .container {
     width: 560px;
-    height: 100vh;
     background-color: #fff;
     margin: 0 auto;
 }
@@ -25,6 +24,11 @@ header, section {
     position: fixed;
     text-align: center;
     width: inherit;
+    background-color: #fff;
+}
+
+header {
+    top: 0;
 }
 
 section {
@@ -60,4 +64,6 @@ article:hover {
 
 .details {
     padding: 8px 22px;
+    white-space: normal;
+    word-break: break-all;
 }

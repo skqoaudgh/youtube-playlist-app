@@ -1,3 +1,5 @@
+let nextPageToken, prevPageToken;
+
 document.addEventListener('DOMContentLoaded', function() {
     let key = 'AIzaSyAKol0ai1U9nSW4NEXHQ57vEz2sG926WNc';
     let playlistId = 'PLVj73insf4VCwtSsS0b6IJDO4uvtYA1Vc';
@@ -10,14 +12,17 @@ document.addEventListener('DOMContentLoaded', function() {
         maxResults: 20
     }
 
-    url.search = new URLSearchParams(option).toString();
-
     loadVideos();
 
-    function loadVideos() {
+    function loadVideos(token='') {
+        option.pageToken = token;
+        url.search = new URLSearchParams(option).toString();
+
         fetch(url)
         .then(res => res.json())
         .then(data => {
+            nextPageToken = data.nextPageToken;
+            prevPageToken = data.prevPageToken;
             let id = data.items[0].snippet.resourceId.videoId;
             mainVideo(id);
             resultsLoop(data.items);
@@ -75,4 +80,13 @@ document.addEventListener('DOMContentLoaded', function() {
             mainVideo(id);
         });
     }
+
+    const leftBtn = document.getElementById('left');
+    const rightBtn = document.getElementById('right');
+    leftBtn.addEventListener('click', function() {
+        loadVideos(prevPageToken);
+    });
+    rightBtn.addEventListener('click', function() {
+        loadVideos(nextPageToken);
+    });
 });
