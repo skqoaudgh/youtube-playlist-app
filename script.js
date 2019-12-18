@@ -1,7 +1,7 @@
 let nextPageToken, prevPageToken;
 
 document.addEventListener('DOMContentLoaded', function() {
-    let key = 'AIzaSyAKol0ai1U9nSW4NEXHQ57vEz2sG926WNc';
+    let key = Enter your API key;
     let playlistId = 'PLVj73insf4VCwtSsS0b6IJDO4uvtYA1Vc';
     let url = new URL('https://www.googleapis.com/youtube/v3/playlistItems');
 
