@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const leftBtn = document.getElementById('left');
     const rightBtn = document.getElementById('right');
+    const resetBtn = document.getElementById('reset');
     leftBtn.addEventListener('click', function() {
         if(prevPageToken && prevPageToken.length > 0)
             loadVideos(prevPageToken);
@@ -90,5 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
     rightBtn.addEventListener('click', function() {
         if(nextPageToken && nextPageToken.length > 0)
             loadVideos(nextPageToken);
+    });
+    resetBtn.addEventListener('click', function() {
+        loadVideos();
     });
 });
